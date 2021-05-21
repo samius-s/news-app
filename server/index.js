@@ -1,13 +1,18 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const config = require('config')
+import express from 'express'
+import mongoose from 'mongoose'
+import router from "./routers/routers.js"
+
+const PORT = 5000
+const DB_URL = "mongodb+srv://user:user@cluster0.ms6ze.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 const app = express()
-const PORT = config.get('serverPort')
+
+app.use(express.json())
+app.use('/api', router)
 
 const startApp = async () => {
     try {
-        await mongoose.connect(config.get('dbUrl'), { useUnifiedTopology: true, useNewUrlParser: true })
+        await mongoose.connect(DB_URL, { useUnifiedTopology: true, useNewUrlParser: true })
 
         app.listen(PORT, () => {
             console.log('Server started on port', PORT)
