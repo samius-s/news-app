@@ -1,6 +1,6 @@
 // класс-клиент для localhoct:5000/news
 
-export default class NewsService {
+export default class NewsAppService {
     _apiBase = 'http://localhost:5000/api'
 
     getResource = async (url) => {
