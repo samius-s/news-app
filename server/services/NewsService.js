@@ -4,7 +4,14 @@ import FileService from './FileService.js'
 class NewsService {
     async getAll() {
         const newsList = await NewsItem.find()
-        return newsList
+        const finalNewsList = newsList.map(e => {
+            return {
+                title: e.title,
+                shortDescription: e.shortDescription,
+                image: e.imageId
+            }
+        })
+        return finalNewsList
     }
 
     async getOne(id) {
@@ -12,12 +19,18 @@ class NewsService {
             throw new Error('ID не указан')
         }
         const newsItem = await NewsItem.findById(id)
-        return newsItem
+        const finalNewsItem = {
+            title: newsItem.title,
+            shortDescription: newsItem.shortDescription,
+            fullDescription: newsItem.fullDescription,
+            image: newsItem.imageId
+        }
+        return finalNewsItem
     }
 
-    async create(newsItem, picture) {
-        const fileName = FileService.saveFile(picture)
-        const createNewsItem = await NewsItem.create({ ...newsItem, picture: fileName })
+    async create(newsItem, image) {
+        const fileName = FileService.saveFile(image)
+        const createNewsItem = await NewsItem.create({ ...newsItem, image: fileName })
         return createNewsItem
     }
 

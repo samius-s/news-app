@@ -21,7 +21,7 @@ class NewsItemController {
 
     async create(req, res) {
         try {
-            const newsItem = await NewsService.create(req.body, req.files.picture)
+            const newsItem = await NewsService.create(req.body, req.files.image)
             res.json(newsItem)
         } catch (e) {
             res.status(500).json(e)
