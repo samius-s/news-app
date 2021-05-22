@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import cors from './middleware/cors.middleware.js'
 import fileUpload from 'express-fileupload'
 import router from "./routers/routers.js"
 
@@ -8,6 +9,7 @@ const DB_URL = "mongodb+srv://user:user@cluster0.ms6ze.mongodb.net/myFirstDataba
 
 const app = express()
 
+app.use(cors)
 app.use(express.json())
 app.use(express.static('static'))
 app.use(fileUpload())

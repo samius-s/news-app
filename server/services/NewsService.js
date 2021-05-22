@@ -15,15 +15,16 @@ class NewsService {
     }
 
     async getOne(id) {
+
+        const newsItem = await NewsItem.find({ imageId: id })
         if (!id) {
-            throw new Error('ID не указан')
+            throw new Error('неверный ID')
         }
-        const newsItem = await NewsItem.findById(id)
         const finalNewsItem = {
-            title: newsItem.title,
-            shortDescription: newsItem.shortDescription,
-            fullDescription: newsItem.fullDescription,
-            image: newsItem.imageId
+            title: newsItem[0].title,
+            shortDescription: newsItem[0].shortDescription,
+            fullDescription: newsItem[0].fullDescription,
+            image: newsItem[0].imageId
         }
         return finalNewsItem
     }
