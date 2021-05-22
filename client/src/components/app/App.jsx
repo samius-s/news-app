@@ -1,9 +1,11 @@
 import React from 'react'
-import Header from '../header/Header'
-import NewsList from '../news-list/news-list'
 import './app.css'
 
-function App() {
+import Header from '../header/Header'
+import NewsList from '../news-list/news-list'
+import withNewsAppService from '../hoc/with-news-app-service'
+
+const App = ({ newsAppService }) => {
   return (
     <div>
       <Header />
@@ -12,4 +14,4 @@ function App() {
   )
 }
 
-export default App
+export default withNewsAppService()(App)
