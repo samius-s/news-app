@@ -1,7 +1,6 @@
-import NewsList from '../models/NewsList.js'
-import NewsService from '../newsService/NewsService.js'
+import NewsService from '../services/NewsService.js'
 
-class NewsListController {
+class NewsItemController {
     async getAll(req, res) {
         try {
             const newsList = await NewsService.getAll()
@@ -22,8 +21,8 @@ class NewsListController {
 
     async create(req, res) {
         try {
-            const newsList = await NewsService.create(req.body)
-            res.json(newsList)
+            const newsItem = await NewsService.create(req.body, req.files.picture)
+            res.json(newsItem)
         } catch (e) {
             res.status(500).json(e)
         }
@@ -41,12 +40,12 @@ class NewsListController {
 
     async delete(req, res) {
         try {
-            const newsList = await NewsService.delete(req.params.id)
-            return res.json(newsList)
+            const newsItem = await NewsService.delete(req.params.id)
+            return res.json(newsItem)
         } catch (e) {
             res.status(500).json(e)
         }
     }
 }
 
-export default new NewsListController()
+export default new NewsItemController()

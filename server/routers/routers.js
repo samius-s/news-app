@@ -1,12 +1,12 @@
 import Router from 'express'
-import NewsListController from '../controllers/NewsListController.js'
+import NewsItemController from '../controllers/NewsItemController.js'
 
 const router = new Router()
 
-router.get('/news', NewsListController.getAll)
-router.get('/news/:id', NewsListController.getOne)
-router.post('/news', NewsListController.create)
-router.put('/news/:id', NewsListController.update)
-router.delete('/news/:id', NewsListController.delete)
+router.get('/news', NewsItemController.getAll)
+router.get('/news/:id', NewsItemController.getOne)
+router.post('/news', NewsItemController.create)
+router.put('/news/:id', NewsItemController.update)
+router.delete('/news/:id', NewsItemController.delete)
 
 export default router
