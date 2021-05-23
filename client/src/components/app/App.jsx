@@ -1,17 +1,20 @@
 import React from 'react'
+import { Route, Switch } from 'react-router-dom'
 import './app.css'
-
 import Header from '../header/Header'
-import NewsList from '../news-list/news-list'
-import withNewsAppService from '../hoc/with-news-app-service'
+import HomePage from '../pages/home-page'
+import NewsItemPage from '../pages/newsItem-page'
 
-const App = ({ newsAppService }) => {
+const App = () => {
   return (
     <div>
       <Header />
-      <NewsList />
+      <Switch>
+        <Route path='/' component={HomePage} exact />
+        <Route path='/news' component={NewsItemPage} />
+      </Switch>
     </div>
   )
 }
 
-export default withNewsAppService()(App)
+export default App
