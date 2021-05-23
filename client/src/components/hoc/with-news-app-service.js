@@ -17,4 +17,4 @@ const withNewsAppService = () => (Wrapped) => {
     }
 }
 
-export default withNewsAppService
+export { withNewsAppService }

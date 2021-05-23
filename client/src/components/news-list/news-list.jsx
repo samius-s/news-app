@@ -1,14 +1,24 @@
 import React, { Component, useEffect } from 'react'
 import NewsItem from '../news-item/news-item'
-import './news-list.css';
+import { connect } from 'react-redux'
+import { withNewsAppService } from '../hoc/with-news-app-service'
+import { newsListLoaded } from '../../actions/'
+import { compose } from '../../utils/compose'
+import './news-list.css'
 
+class NewsList extends Component {
 
-export default class NewsList extends Component {
+    componentDidMount() {
+        const { newsAppService } = this.props
+        const data = newsAppService
+            .getNewsList()
+            .then((data) => {
+                this.props.newsListLoaded(data)
+            })
+    }
+
     render() {
-
         const { newsList } = this.props
-
-        console.log(newsList)
         return (
             <ul>
                 {
@@ -25,12 +35,23 @@ export default class NewsList extends Component {
     }
 }
 
-// const NewsList = () => {
+const mapStateToProps = ({ newsList }) => {
+    return { newsList }
+}
 
+const mapDispatchToProps = {
+    newsListLoaded
+}
+
+export default compose(
+    withNewsAppService(),
+    connect(mapStateToProps, mapDispatchToProps)
+)(NewsList)
+
+// const NewsList = () => {
 //     useEffect(() => {
 //         console.log('mount')
 //     }, [])
-
 //     return (
 //         <div>
 //             <NewsItem />
@@ -39,5 +60,4 @@ export default class NewsList extends Component {
 //         </div>
 //     )
 // }
-
 // export default NewsList
