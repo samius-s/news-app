@@ -20,7 +20,7 @@ class NewsList extends Component {
     render() {
         const { newsList } = this.props
         return (
-            <ul>
+            <ul className='news-list'>
                 {
                     newsList.map((newsItem) => {
                         return (

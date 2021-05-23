@@ -1,0 +1,33 @@
+.news-list-item {
+    display: flex;
+    margin: 10px auto;
+    border: 1.5px solid gray;
+    min-width: 400px;
+    cursor: pointer;
+}
+
+.news-list-item .news-cover {
+    flex-shrink: 0;
+    width: 150px;
+    margin-right: 30px;
+}
+
+.news-list-item .news-cover img {
+    padding: 10px;
+    max-width: 100%;
+}
+
+.news-list-item .news-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5px;
+    min-width: 100px;
+}
+
+.news-list-item .news-details .news-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    justify-content: center;
+}
