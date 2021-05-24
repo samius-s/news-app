@@ -1,10 +1,10 @@
 import React from 'react'
-import NewsList from '../news-list/news-list'
+import NewsListContainer from '../../containers/news-list/news-list-container'
 
 const HomePage = () => {
 
     return (
-        <NewsList />
+        <NewsListContainer />
     )
 }
 

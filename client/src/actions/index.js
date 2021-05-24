@@ -1,17 +1,39 @@
+
+
+const newsListRequested = () => {
+    return {
+        type: 'FETCH_NEWSLIST_REQUEST'
+    }
+}
+
 const newsListLoaded = (newsList) => {
     return {
-        type: 'NEWSLIST_LOADED',
+        type: 'FETCH_NEWSLIST_SUCCESS',
         payload: newsList
     }
 }
 
-const newsListRequested = () => {
+const newsListError = (error) => {
     return {
-        type: 'NEWSLIST_REQUESTED'
+        type: 'FETCH_NEWSLIST_FAILURE',
+        payload: error
+    }
+}
+
+const fetchNewsList = (newsAppService, dispatch) => () => {
+    dispatch(newsListRequested())
+    newsAppService.getNewsList()
+        .then((data) => dispatch(newsListLoaded(data)))
+        .catch((err) => dispatch(newsListError(err)))
+}
+
+export const newsItemOpened = (newsItemId) => {
+    return {
+        type: 'NEWS_ITEM_OPENED',
+        payload: newsItemId
     }
 }
 
 export {
-    newsListLoaded,
-    newsListRequested
+    fetchNewsList
 }
