@@ -13,7 +13,7 @@
 }
 
 .news-list-item .news-cover img {
-    padding: 10px;
+    padding: .6rem;
     max-width: 100%;
 }
 
@@ -22,7 +22,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 5px;
+    margin-top: .3rem;
     min-width: 100px;
 }
 

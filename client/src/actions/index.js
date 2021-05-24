@@ -5,6 +5,13 @@ const newsListLoaded = (newsList) => {
     }
 }
 
+const newsListRequested = () => {
+    return {
+        type: 'NEWSLIST_REQUESTED'
+    }
+}
+
 export {
-    newsListLoaded
+    newsListLoaded,
+    newsListRequested
 }

@@ -10,8 +10,19 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    color: black;
 }
 
 .header img {
     height: 100px;
+}
+
+.header .logo-container span {
+    font-size: 2rem;
+    text-decoration-line: none;
+}
+
+.header .logo-container:hover {
+    text-decoration: underline;
+    color: gray;
 }

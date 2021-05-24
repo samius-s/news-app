@@ -1,24 +1,28 @@
 import React, { Component, useEffect } from 'react'
 import NewsItem from '../news-item/news-item'
+import Spinner from '../spinner/spinner'
 import { connect } from 'react-redux'
 import { withNewsAppService } from '../hoc/with-news-app-service'
-import { newsListLoaded } from '../../actions/'
+import { newsListLoaded, newsListRequested } from '../../actions/'
 import { compose } from '../../utils/compose'
 import './news-list.css'
 
 class NewsList extends Component {
 
     componentDidMount() {
-        const { newsAppService } = this.props
+        const { newsAppService, newsListLoaded, newsListRequested } = this.props
+        newsListRequested()
         const data = newsAppService
             .getNewsList()
-            .then((data) => {
-                this.props.newsListLoaded(data)
-            })
+            .then((data) => newsListLoaded(data))
     }
 
     render() {
-        const { newsList } = this.props
+        const { newsList, loading } = this.props
+        if (loading) {
+            return <Spinner />
+        }
+
         return (
             <ul className='news-list'>
                 {
@@ -35,12 +39,13 @@ class NewsList extends Component {
     }
 }
 
-const mapStateToProps = ({ newsList }) => {
-    return { newsList }
+const mapStateToProps = ({ newsList, loading }) => {
+    return { newsList, loading }
 }
 
 const mapDispatchToProps = {
-    newsListLoaded
+    newsListLoaded,
+    newsListRequested
 }
 
 export default compose(

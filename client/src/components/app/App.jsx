@@ -7,7 +7,7 @@ import NewsItemPage from '../pages/newsItem-page'
 
 const App = () => {
   return (
-    <main role='main' className='container'>
+    <main role='main' className='app container'>
       <Header />
       <Switch>
         <Route path='/' component={HomePage} exact />
