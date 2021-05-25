@@ -1,9 +1,9 @@
 
 const initialState = {
+    newsItem: 1,
     newsList: [],
     loading: true,
     error: null,
-    openedNewsItem: null,
 }
 
 const reducer = (state = initialState, action) => {
@@ -32,13 +32,31 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: action.payload
             }
-        case 'NEWSITEM_OPENED':
-            const newsItemId = action.payload
-            const newsItem = state.newsList.find((newsItem) => newsItem.image === newsItemId)
+
+        case 'FETCH_NEWSITEM_REQUEST':
             return {
                 ...state,
-                openedNewsItem: newsItem.image
+                newsItem: null,
+                loading: true,
+                error: null
             }
+        case 'FETCH_NEWSITEM_SUCCESS':
+            return {
+                ...state,
+                newsItem: action.payload,
+                loading: false,
+                error: null
+            }
+        case 'FETCH_NEWSITEM_FAILURE':
+            return {
+                ...state,
+                newsItem: null,
+                loading: false,
+                error: action.payload
+            }
+
+
+
 
         default:
             return state

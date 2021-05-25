@@ -4,7 +4,7 @@ import Spinner from '../../components/spinner/spinner'
 import ErrorIndicator from '../../components/error-indicator/error-indicator'
 import { connect } from 'react-redux'
 import { withNewsAppService } from '../../components/hoc/with-news-app-service'
-import { fetchNewsList, newsItemOpened } from '../../actions'
+import { fetchNewsList } from '../../actions'
 import { compose } from '../../utils/compose'
 
 class NewsListContainer extends Component {
@@ -14,7 +14,7 @@ class NewsListContainer extends Component {
     }
 
     render() {
-        const { newsList, loading, error, onOpenedNewsItem } = this.props
+        const { newsList, loading, error } = this.props
         if (loading) {
             return <Spinner />
         }
@@ -22,7 +22,8 @@ class NewsListContainer extends Component {
         if (error) {
             return <ErrorIndicator />
         }
-        return <NewsList newsList={newsList} onOpenedNewsItem={onOpenedNewsItem} />
+
+        return <NewsList newsList={newsList} />
     }
 }
 
@@ -33,10 +34,7 @@ const mapStateToProps = ({ newsList, loading, error }) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     const { newsAppService } = ownProps // в.14 ownProps
     return {
-        fetchNewsList: fetchNewsList(newsAppService, dispatch),
-        onOpenedNewsItem: (id) => {
-            dispatch(newsItemOpened(id))
-        }
+        fetchNewsList: fetchNewsList(newsAppService, dispatch)
     }
 }
 

@@ -20,6 +20,27 @@ const newsListError = (error) => {
     }
 }
 
+const newsItemRequested = (id) => {
+    return {
+        type: 'FETCH_NEWSITEM_REQUEST',
+        payload: id
+    }
+}
+
+const newsItemLoaded = (newsItem) => {
+    return {
+        type: 'FETCH_NEWSITEM_SUCCESS',
+        payload: newsItem
+    }
+}
+
+const newsItemError = (error) => {
+    return {
+        type: 'FETCH_NEWSITEM_FAILURE',
+        payload: error
+    }
+}
+
 const fetchNewsList = (newsAppService, dispatch) => () => {
     dispatch(newsListRequested())
     newsAppService.getNewsList()
@@ -27,13 +48,14 @@ const fetchNewsList = (newsAppService, dispatch) => () => {
         .catch((err) => dispatch(newsListError(err)))
 }
 
-export const newsItemOpened = (newsItemId) => {
-    return {
-        type: 'NEWS_ITEM_OPENED',
-        payload: newsItemId
-    }
+const fetchNewsItem = (newsAppService, dispatch) => (id) => {
+    dispatch(newsItemRequested(id))
+    newsAppService.getNewsItem()
+        .then((data) => dispatch(newsItemLoaded(data)))
+        .catch((err) => dispatch(newsItemError(err)))
 }
 
 export {
-    fetchNewsList
+    fetchNewsList,
+    fetchNewsItem
 }

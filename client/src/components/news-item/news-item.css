@@ -4,6 +4,12 @@
     border: 1.5px solid gray;
     min-width: 400px;
     cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+.news-list-item:hover {
+    color: gray;
 }
 
 .news-list-item .news-cover {
@@ -24,6 +30,7 @@
     align-items: flex-start;
     margin-top: .3rem;
     min-width: 100px;
+
 }
 
 .news-list-item .news-details .news-title {
