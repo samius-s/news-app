@@ -2,12 +2,14 @@ import React from 'react'
 import NewsItem from '../news-item/news-item'
 import './news-list.css'
 
-const NewsList = ({ newsList }) => {
+const NewsList = ({ newsList, onNewsItemSelected }) => {
+    debugger
     const elements = newsList.map((newsItem) => {
         return (
             <li key={newsItem.image}>
-                <NewsItem
-                    newsItem={newsItem} />
+                <NewsItem newsItem={newsItem}
+                    onNewsItemSelected={() => onNewsItemSelected(newsList.image)}
+                />
             </li>
         )
     })

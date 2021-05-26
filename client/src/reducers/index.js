@@ -1,6 +1,6 @@
 
 const initialState = {
-    newsItem: 1,
+    newsItem: null,
     newsList: [],
     loading: true,
     error: null,

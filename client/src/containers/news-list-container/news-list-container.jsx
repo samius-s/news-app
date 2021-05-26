@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NewsList from '../../components/news-list/news-list'
 import Spinner from '../../components/spinner/spinner'
 import ErrorIndicator from '../../components/error-indicator/error-indicator'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withNewsAppService } from '../../components/hoc/with-news-app-service'
 import { fetchNewsList } from '../../actions'
@@ -11,6 +12,11 @@ class NewsListContainer extends Component {
 
     componentDidMount() {
         this.props.fetchNewsList() // в.14 ownProps
+    }
+
+    onNewsItemSelected(id) {
+        console.log(id)
+        // this.history.push(`/news/${id}`)
     }
 
     render() {
@@ -23,7 +29,13 @@ class NewsListContainer extends Component {
             return <ErrorIndicator />
         }
 
-        return <NewsList newsList={newsList} />
+        return <NewsList
+            newsList={newsList}
+            onNewsItemSelected={this.onNewsItemSelected}
+
+        // onNewsItemSelected={
+        //             (id) => { history.push(`/news/${id}`) }}
+        />
     }
 }
 
@@ -38,7 +50,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
+let withUrlDataNewsListContainer = withRouter(NewsListContainer)
+
 export default compose(
     withNewsAppService(),
     connect(mapStateToProps, mapDispatchToProps)
-)(NewsListContainer)
+)(withUrlDataNewsListContainer)

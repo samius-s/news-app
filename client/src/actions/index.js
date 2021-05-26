@@ -50,7 +50,7 @@ const fetchNewsList = (newsAppService, dispatch) => () => {
 
 const fetchNewsItem = (newsAppService, dispatch) => (id) => {
     dispatch(newsItemRequested(id))
-    newsAppService.getNewsItem()
+    newsAppService.getNewsItem(id)
         .then((data) => dispatch(newsItemLoaded(data)))
         .catch((err) => dispatch(newsItemError(err)))
 }

@@ -9,23 +9,23 @@ import { compose } from '../../utils/compose'
 
 class FullNewsItemContainer extends Component {
 
-
-    // componentDidMount() {
-    //     this.props.getNewsItem(2) // в.14 ownProps
-    // }
+    componentDidMount() {
+        const id = this.props.newsItemId
+        this.props.fetchNewsItem(id) // в.14 ownProps
+    }
 
     render() {
-        const { newsItem, loading, error, id } = this.props
         console.log(this.props)
-        // if (loading) {
-        //     return <Spinner />
-        // }
+        const { newsItem, loading, error } = this.props
+        if (loading) {
+            return <Spinner />
+        }
 
-        // if (error) {
-        //     return <ErrorIndicator />
-        // }
+        if (error) {
+            return <ErrorIndicator />
+        }
 
-        return <FullNewsItem newsItem={newsItem} id={id} />
+        return <FullNewsItem newsItem={newsItem} />
     }
 }
 

@@ -1,11 +1,12 @@
 import React from 'react'
 import FullNewsItemContainer from '../../containers/full-news-item-container/full-news-item-container'
 
-const NewsItemPage = (props) => {
+const NewsItemPage = ({ newsItemId }) => {
+    console.log(newsItemId)
     return (
         <div>
-            NewsItemPage
-            <FullNewsItemContainer id={props.match.params.id} />
+            <FullNewsItemContainer newsItemId={newsItemId}
+            />
         </div>
     )
 }
