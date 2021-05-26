@@ -10,12 +10,15 @@ const App = () => {
     <main role='main' className='app container'>
       <Header />
       <Switch>
-        <Route path='/' component={HomePage} exact />
+        {/* <Route path='/' component={HomePage} exact /> */}
+        <Route path='/' exact render={({ history }) => {
+          console.log('history', history)
+          return <HomePage history={history} />
+        }} />
         <Route path='/news/:id'
           render={({ match }) => {
-            console.log(match.params.id)
+
             const { id } = match.params
-            console.log(id)
             return <NewsItemPage newsItemId={id} />
           }}
         />

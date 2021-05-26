@@ -14,10 +14,10 @@ class NewsListContainer extends Component {
         this.props.fetchNewsList() // в.14 ownProps
     }
 
-    onNewsItemSelected(id) {
-        console.log(id)
-        // this.history.push(`/news/${id}`)
-    }
+    // onNewsItemSelected(id) {
+    //     console.log(id)
+    //     // this.props.history.push(`/news/${id}`)
+    // }
 
     render() {
         const { newsList, loading, error } = this.props
@@ -31,10 +31,8 @@ class NewsListContainer extends Component {
 
         return <NewsList
             newsList={newsList}
-            onNewsItemSelected={this.onNewsItemSelected}
-
-        // onNewsItemSelected={
-        //             (id) => { history.push(`/news/${id}`) }}
+            history={this.props.history}
+        // onNewsItemSelected={this.onNewsItemSelected}
         />
     }
 }
