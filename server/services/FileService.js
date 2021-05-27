@@ -1,10 +1,9 @@
-import * as uuid from 'uuid'
 import * as path from 'path'
 
 class FileService {
-    saveFile(file) {
+    saveFile(file, imageId) {
         try {
-            const fileName = uuid.v4() + '.jpg'
+            const fileName = `newsImage-${imageId}.jpg`
             const filePath = path.resolve('static', fileName)
             file.mv(filePath)
             return fileName

@@ -12,7 +12,6 @@ const App = () => {
       <Switch>
         {/* <Route path='/' component={HomePage} exact /> */}
         <Route path='/' exact render={({ history }) => {
-          console.log('history', history)
           return <HomePage history={history} />
         }} />
         <Route path='/news/:id'

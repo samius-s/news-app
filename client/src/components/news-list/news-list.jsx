@@ -2,14 +2,7 @@ import React from 'react'
 import NewsItem from '../news-item/news-item'
 import './news-list.css'
 
-const NewsList = (props) => {
-
-    const onNewsItemSelected = (id) => {
-        console.log(id)
-        props.history.push(`/news/${id}`)
-    }
-
-    const { newsList } = props
+const NewsList = ({ newsList, onNewsItemSelected }) => {
 
     const elements = newsList.map((newsItem) => {
         return (

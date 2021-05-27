@@ -5,14 +5,16 @@ const FullNewsItem = ({ id, newsItem }) => {
 
     const { fullDescription, image, title, shortDescription } = newsItem
 
-    return (
-        <div className='full-news-list'>
-            {image} {id}
-            {title}
-            {shortDescription}
-            {fullDescription}
+    const imgUrl = `http://localhost:5000/newsImage-${image}.jpg`
 
-        </div>
+    return (
+        <article className='full-news-list'>
+            <h2>{title}</h2>
+            <h5>{shortDescription}</h5>
+            <img src={imgUrl} alt='cover' />
+            <h5>{fullDescription}</h5>
+
+        </article>
     )
 }
 

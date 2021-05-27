@@ -15,7 +15,6 @@ class FullNewsItemContainer extends Component {
     }
 
     render() {
-        console.log(this.props)
         const { newsItem, loading, error } = this.props
         if (loading) {
             return <Spinner />
