@@ -51,9 +51,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-let withUrlDataNewsListContainer = withRouter(NewsListContainer)
-
 export default compose(
     withNewsAppService(),
     connect(mapStateToProps, mapDispatchToProps)
-)(withUrlDataNewsListContainer)
+)(withRouter(NewsListContainer))

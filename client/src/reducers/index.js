@@ -1,5 +1,6 @@
 
 const initialState = {
+    isAdmin: false,
     newsItem: null,
     newsList: [],
     loading: true,
@@ -11,6 +12,19 @@ const reducer = (state = initialState, action) => {
     console.log(action.type)
 
     switch (action.type) {
+
+        case 'ADMIN_TOGGLED_ON':
+            return {
+                ...state,
+                isAdmin: true
+            }
+
+        case 'ADMIN_TOGGLED_OFF':
+            return {
+                ...state,
+                isAdmin: false
+            }
+
         case 'FETCH_NEWSLIST_REQUEST':
             return {
                 ...state,

@@ -1,0 +1,13 @@
+.admin-toggle {
+    color: gray;
+    border: solid 1px black;
+}
+
+.admin-toggle-item {
+    padding: 6px 10px;
+}
+
+.admin-toggle-item:hover {
+    color: black;
+    background-color: gainsboro;
+}

@@ -1,4 +1,15 @@
 
+const isAdminToggledOn = () => {
+    return {
+        type: 'ADMIN_TOGGLED_ON'
+    }
+}
+
+const isAdminToggledOff = () => {
+    return {
+        type: 'ADMIN_TOGGLED_OFF'
+    }
+}
 
 const newsListRequested = () => {
     return {
@@ -57,5 +68,7 @@ const fetchNewsItem = (newsAppService, dispatch) => (id) => {
 
 export {
     fetchNewsList,
-    fetchNewsItem
+    fetchNewsItem,
+    isAdminToggledOn,
+    isAdminToggledOff
 }

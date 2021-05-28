@@ -10,9 +10,9 @@ const FullNewsItem = ({ id, newsItem }) => {
     return (
         <article className='full-news-list'>
             <h2>{title}</h2>
-            <h5>{shortDescription}</h5>
+            <p>{shortDescription}</p>
             <img src={imgUrl} alt='cover' />
-            <h5>{fullDescription}</h5>
+            <p>{fullDescription}</p>
 
         </article>
     )

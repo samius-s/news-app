@@ -30,11 +30,14 @@
     align-items: flex-start;
     margin-top: .3rem;
     min-width: 100px;
-
+    padding-right: 20px;
+    text-align: justify;
 }
 
 .news-list-item .news-details .news-title {
     font-weight: 700;
-    font-size: 1.4rem;
-    justify-content: center;
+    font-size: 1.3rem;
+    padding-bottom: 5px;
+    /* text-align: center; */
+    /* justify-content: center; */
 }

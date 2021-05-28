@@ -3,7 +3,6 @@ import './news-item.css'
 
 const NewsItem = ({ newsItem, onNewsItemSelected }) => {
     const { title, shortDescription, image } = newsItem
-    console.log(image)
     const imgUrl = `http://localhost:5000/newsImage-${image}.jpg`
     return (
         <div className='news-list-item' onClick={onNewsItemSelected}>
