@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NewsList from '../../components/news-list/news-list'
-import Spinner from '../../components/spinner/spinner'
+import Spinner from '../../components/common/spinner/spinner'
 import ErrorIndicator from '../../components/error-indicator/error-indicator'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'

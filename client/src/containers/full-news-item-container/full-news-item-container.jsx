@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Spinner from '../../components/spinner/spinner'
+import Spinner from '../../components/common/spinner/spinner'
 import ErrorIndicator from '../../components/error-indicator/error-indicator'
 import FullNewsItem from '../../components/full-news-item/full-news-item'
 import { connect } from 'react-redux'

@@ -3,11 +3,12 @@ import AdminPanelToggle from '../admin-panel-toggle/admin-panel-toggle'
 import { connect } from 'react-redux'
 import './admin-panel.css'
 import { isAdminToggledOn, isAdminToggledOff } from '../../actions'
+import Button from '../common/button/button'
 
 class AdminPanel extends Component {
 
     state = {
-        isToggleOpen: true
+        isToggleOpen: false
     }
 
     toggleChange = () => {
@@ -16,6 +17,16 @@ class AdminPanel extends Component {
                 isToggleOpen: !state.isToggleOpen
             }
         })
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.isAdmin !== prevProps.isAdmin) {
+            this.setState((state) => {
+                return {
+                    isToggleOpen: !state.isToggleOpen
+                }
+            })
+        }
     }
 
     render() {
@@ -27,15 +38,25 @@ class AdminPanel extends Component {
                 isAdminToggledOff={isAdminToggledOff} />
             : null
 
-        const listLabel = isAdmin ? 'Вкл.' : 'Выкл.'
+        const buttonShow = this.state.isToggleOpen
+            ? null
+            : <Button type={"fa fa-plus"} />
+
+        const listLabel = isAdmin ? ' вкл.' : ' выкл.'
 
         const caretView = this.state.isToggleOpen ? "fa fa-caret-up" : "fa fa-caret-down"
 
         return (
             <div className='admin-panel'>
-                Права администратора {listLabel}
-                <i className={caretView} onClick={this.toggleChange} />
-                {list}
+                <div className='admin-info'>
+                    Права администратора
+                    <span onClick={this.toggleChange}>{listLabel}
+                        <i className={caretView} /></span>
+                    {list}
+                </div>
+                <div className='add-news-button'>
+                    {buttonShow}
+                </div>
             </div>
         )
     }

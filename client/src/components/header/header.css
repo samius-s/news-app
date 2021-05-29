@@ -23,6 +23,5 @@
 }
 
 .header .logo-container:hover {
-    text-decoration: underline;
     color: gray;
 }

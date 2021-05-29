@@ -1,4 +1,5 @@
 .app {
     font-family: Georgia, 'Times New Roman', Times, serif;
     max-width: 1200px;
+    margin: auto;
 }

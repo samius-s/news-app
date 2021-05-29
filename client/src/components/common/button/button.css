@@ -1,0 +1,22 @@
+.control-button {
+    margin-bottom: 1rem;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.control-button:hover {
+    background-color: gainsboro;
+    border: none;
+    border-radius: 3px;
+}
+
+.control-button i {
+    font-size: 2rem;
+    color: grey;
+}
+
+.control-button i:hover {
+    font-size: 2.1rem;
+    color: black;
+}

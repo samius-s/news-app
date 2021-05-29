@@ -2,9 +2,18 @@
     font-size: 0.8rem;
     margin-top: 5px;
     margin-right: 5px;
+    user-select: none;
+}
+
+.admin-panel .admin-info span {
     cursor: pointer;
 }
 
-.admin-panel i {
+.admin-panel .admin-info i {
     font-size: 1.2rem;
+}
+
+.admin-panel .add-news-button {
+    text-align: center;
+    padding: 0.3rem;
 }

@@ -30,7 +30,7 @@ class NewsService {
     }
 
     async create(newsItem, image) {
-        const fileName = FileService.saveFile(image)
+        const fileName = FileService.saveFile(image, newsItem.imageId)
         const createNewsItem = await NewsItem.create({ ...newsItem, image: fileName })
         return createNewsItem
     }
@@ -39,7 +39,7 @@ class NewsService {
         if (!newsItem._id & !id) {
             throw new Error('ID не указан')
         }
-        const updatedNewsItem = await NewsItem.findByIdAndUpdate(newsItem._id, newsItem, { new: true })
+        const updatedNewsItem = await NewsItem.findOneAndUpdate({ imageId: id }, newsItem, { new: true })
         return updatedNewsItem
     }
 
@@ -47,7 +47,10 @@ class NewsService {
         if (!id) {
             throw new Error('ID не указан')
         }
-        const newsItem = await NewsItem.findByIdAndDelete(id)
+        // const newsItem = await NewsItem.findByIdAndDelete(id)
+        // return newsItem
+
+        const newsItem = await NewsItem.findOneAndDelete({ imageId: id })
         return newsItem
     }
 }
