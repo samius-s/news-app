@@ -22,4 +22,9 @@ export default class NewsAppService {
         const newsItem = await this.getResource(`/news/${id}/`);
         return newsItem
     }
+
+    deleteNewsItem = (id) => {
+        fetch(`${this._apiBase}/news/${id}`, { method: 'DELETE' })
+    }
 }
+

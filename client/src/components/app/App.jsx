@@ -4,26 +4,30 @@ import './app.css'
 import Header from '../header/header'
 import HomePage from '../pages/home-page'
 import NewsItemPage from '../pages/news-item-page'
+import EditPage from '../pages/edit-page'
+import { connect } from 'react-redux'
 
-const App = () => {
+const App = ({ isAdmin }) => {
   return (
     <main role='main' className='app container'>
       <Header />
       <Switch>
-        {/* <Route path='/' component={HomePage} exact /> */}
         <Route path='/' exact render={({ history }) => {
           return <HomePage history={history} />
         }} />
         <Route path='/news/:id'
           render={({ match }) => {
-
             const { id } = match.params
             return <NewsItemPage newsItemId={id} />
-          }}
-        />
+          }} />
+        <Route path='/edit' render={() => (<EditPage isAdmin={isAdmin} />)} />
       </Switch>
     </main>
   )
 }
 
-export default App
+const mapStateToProps = ({ isAdmin }) => {
+  return { isAdmin }
+}
+
+export default connect(mapStateToProps)(App)

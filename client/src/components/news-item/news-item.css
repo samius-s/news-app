@@ -13,7 +13,7 @@
     justify-content: center;
     flex-shrink: 0;
     width: 12rem;
-    margin-right: 1rem;
+    margin-right: 0.8rem;
 }
 
 .news-list-item .news-cover img {
@@ -33,7 +33,7 @@
     align-items: flex-start;
     margin-top: .3rem;
     min-width: 100px;
-    padding: 0.1rem 2rem 0.5rem 0;
+    padding: 0.1rem 1rem 0.5rem 0;
     text-align: justify;
 }
 

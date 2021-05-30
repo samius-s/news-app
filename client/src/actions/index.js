@@ -52,6 +52,14 @@ const newsItemError = (error) => {
     }
 }
 
+const newsItemDeleted = (id) => {
+    return {
+        type: 'FETCH_NEWSITEM_DELETE',
+        payload: id
+    }
+}
+
+
 const fetchNewsList = (newsAppService, dispatch) => () => {
     dispatch(newsListRequested())
     newsAppService.getNewsList()
@@ -70,5 +78,6 @@ export {
     fetchNewsList,
     fetchNewsItem,
     isAdminToggledOn,
-    isAdminToggledOff
+    isAdminToggledOff,
+    newsItemDeleted
 }

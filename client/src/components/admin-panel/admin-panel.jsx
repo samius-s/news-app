@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import AdminPanelToggle from '../admin-panel-toggle/admin-panel-toggle'
 import { connect } from 'react-redux'
 import './admin-panel.css'
@@ -29,6 +30,10 @@ class AdminPanel extends Component {
         }
     }
 
+    onNewsItemDeleted = () => {
+        console.log('add newsItem')
+    }
+
     render() {
 
         const { isAdmin, isAdminToggledOn, isAdminToggledOff } = this.props
@@ -40,7 +45,9 @@ class AdminPanel extends Component {
 
         const buttonShow = this.state.isToggleOpen
             ? null
-            : <Button type={"fa fa-plus"} />
+            : (!isAdmin)
+                ? null
+                : <Button type={"fa fa-plus"} onAction={this.onNewsItemDeleted} />
 
         const listLabel = isAdmin ? ' вкл.' : ' выкл.'
 
@@ -55,7 +62,9 @@ class AdminPanel extends Component {
                     {list}
                 </div>
                 <div className='add-news-button'>
-                    {buttonShow}
+                    <Link to='/edit'>
+                        {buttonShow}
+                    </Link>
                 </div>
             </div>
         )

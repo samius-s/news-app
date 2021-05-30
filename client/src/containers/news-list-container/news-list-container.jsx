@@ -5,7 +5,7 @@ import ErrorIndicator from '../../components/error-indicator/error-indicator'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withNewsAppService } from '../../components/hoc/with-news-app-service'
-import { fetchNewsList, fetchNewsItem } from '../../actions'
+import { fetchNewsList, fetchNewsItem, newsItemDeleted } from '../../actions'
 import { compose } from '../../utils/compose'
 
 class NewsListContainer extends Component {
@@ -16,14 +16,24 @@ class NewsListContainer extends Component {
 
     onNewsItemSelected = (id) => {
         if (this.props.newsItem === null) {
-            console.log('start new list cont')
             this.props.fetchNewsItem(id)
         }
         this.props.history.push(`/news/${id}`)
     }
 
+    onNewsItemDeleted = (id) => {
+        // this.props.newsItemDeleted(id)
+        fetch(`http://localhost:5000/api/news/${id}`, { method: 'DELETE' })
+            .then(() => this.props.fetchNewsList())
+    }
+
+    onNewsItemChanged = (id) => {
+        console.log('changed newsItem', id)
+        this.props.history.push(`/edit/`)
+    }
+
     render() {
-        const { newsList, loading, error } = this.props
+        const { isAdmin, newsList, loading, error } = this.props
         if (loading) {
             return <Spinner />
         }
@@ -33,21 +43,25 @@ class NewsListContainer extends Component {
         }
 
         return <NewsList
+            isAdmin={isAdmin}
             newsList={newsList}
+            onNewsItemDeleted={this.onNewsItemDeleted}
             onNewsItemSelected={this.onNewsItemSelected}
+            onNewsItemChanged={this.onNewsItemChanged}
         />
     }
 }
 
-const mapStateToProps = ({ newsItem, newsList, loading, error }) => {
-    return { newsItem, newsList, loading, error }
+const mapStateToProps = ({ isAdmin, newsItem, newsList, loading, error }) => {
+    return { isAdmin, newsItem, newsList, loading, error }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     const { newsAppService } = ownProps // в.14 ownProps
     return {
         fetchNewsList: fetchNewsList(newsAppService, dispatch),
-        fetchNewsItem: fetchNewsItem(newsAppService, dispatch)
+        fetchNewsItem: fetchNewsItem(newsAppService, dispatch),
+        newsItemDeleted: (id) => dispatch(newsItemDeleted(id))
     }
 }
 

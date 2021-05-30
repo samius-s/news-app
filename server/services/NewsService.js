@@ -36,7 +36,7 @@ class NewsService {
     }
 
     async update(newsItem, id) {
-        if (!newsItem._id & !id) {
+        if (!newsItem._id && !id) {
             throw new Error('ID не указан')
         }
         const updatedNewsItem = await NewsItem.findOneAndUpdate({ imageId: id }, newsItem, { new: true })

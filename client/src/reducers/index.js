@@ -1,6 +1,6 @@
 
 const initialState = {
-    isAdmin: false,
+    isAdmin: true,
     newsItem: null,
     newsList: [],
     loading: true,
@@ -67,6 +67,11 @@ const reducer = (state = initialState, action) => {
                 newsItem: null,
                 loading: false,
                 error: action.payload
+            }
+
+        case 'FETCH_NEWSITEM_DELETE':
+            return {
+                ...state
             }
 
 
