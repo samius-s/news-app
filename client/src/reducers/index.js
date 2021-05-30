@@ -70,11 +70,15 @@ const reducer = (state = initialState, action) => {
             }
 
         case 'FETCH_NEWSITEM_DELETE':
+            const idx = state.newsList.findIndex((el) => el.image === action.payload)
+            const newNewsList = [
+                ...state.newsList.slice(0, idx),
+                ...state.newsList.slice(idx + 1)
+            ]
             return {
-                ...state
+                ...state,
+                newsList: newNewsList
             }
-
-
 
 
         default:

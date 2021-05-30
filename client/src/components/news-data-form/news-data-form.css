@@ -1,14 +1,37 @@
 .news-data {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    /* justify-content: center; */
-}
-
-.news-data-form h2 {
+    align-items: center;
     text-align: center;
 }
 
-.news-data-form input {
+input,
+textarea {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
     display: block;
+    min-width: 500px;
+    min-height: 2rem;
+}
+
+label {
+    font-size: 1.3rem;
+}
+
+textarea {
+    min-height: 6rem;
+}
+
+.news-data .input-area {
+    padding: 1rem 0;
+}
+
+.news-data .input-area .image-input {
+    padding: 1rem 0;
+    min-width: 250px;
+    margin: auto;
+}
+
+button {
+    font-size: 1.2rem;
 }

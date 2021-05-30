@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import './app.css'
 import Header from '../header/header'
 import HomePage from '../pages/home-page'
@@ -21,6 +21,7 @@ const App = ({ isAdmin }) => {
             return <NewsItemPage newsItemId={id} />
           }} />
         <Route path='/edit' render={() => (<EditPage isAdmin={isAdmin} />)} />
+        <Redirect to='/' />
       </Switch>
     </main>
   )

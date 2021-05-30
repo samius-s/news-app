@@ -79,5 +79,5 @@ export {
     fetchNewsItem,
     isAdminToggledOn,
     isAdminToggledOff,
-    newsItemDeleted
+    newsItemDeleted,
 }

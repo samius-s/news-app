@@ -22,9 +22,11 @@ class NewsListContainer extends Component {
     }
 
     onNewsItemDeleted = (id) => {
-        // this.props.newsItemDeleted(id)
+        // this.props.newsItemDeleted(id) // почему-то не импортируется из withNewsAppService
         fetch(`http://localhost:5000/api/news/${id}`, { method: 'DELETE' })
-            .then(() => this.props.fetchNewsList())
+            // .then(() => this.props.fetchNewsList()) // чтобы не обращаться на сервер, удалю из Redux state
+            .then(this.props.newsItemDeleted(id))
+
     }
 
     onNewsItemChanged = (id) => {
