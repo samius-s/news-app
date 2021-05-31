@@ -30,10 +30,6 @@ class AdminPanel extends Component {
         }
     }
 
-    onNewsItemDeleted = () => {
-        console.log('add newsItem')
-    }
-
     render() {
 
         const { isAdmin, isAdminToggledOn, isAdminToggledOff } = this.props
@@ -47,7 +43,7 @@ class AdminPanel extends Component {
             ? null
             : (!isAdmin)
                 ? null
-                : <Button type={"fa fa-plus"} onAction={this.onNewsItemDeleted} />
+                : <Button type={"fa fa-plus"} />
 
         const listLabel = isAdmin ? ' вкл.' : ' выкл.'
 

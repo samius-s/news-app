@@ -2,6 +2,7 @@
 const initialState = {
     isAdmin: true,
     newsItem: null,
+    newsItemToEdit: null,
     newsList: [],
     loading: true,
     error: null,
@@ -12,19 +13,16 @@ const reducer = (state = initialState, action) => {
     console.log(action.type)
 
     switch (action.type) {
-
         case 'ADMIN_TOGGLED_ON':
             return {
                 ...state,
                 isAdmin: true
             }
-
         case 'ADMIN_TOGGLED_OFF':
             return {
                 ...state,
                 isAdmin: false
             }
-
         case 'FETCH_NEWSLIST_REQUEST':
             return {
                 ...state,
@@ -46,7 +44,6 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: action.payload
             }
-
         case 'FETCH_NEWSITEM_REQUEST':
             return {
                 ...state,
@@ -68,7 +65,6 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: action.payload
             }
-
         case 'FETCH_NEWSITEM_DELETE':
             const idx = state.newsList.findIndex((el) => el.image === action.payload)
             const newNewsList = [
@@ -79,7 +75,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 newsList: newNewsList
             }
-
+        case 'NEWSITEM_EDIT':
+            const idxToEdit = state.newsList.findIndex((el) => el.image === action.payload)
+            return {
+                ...state,
+                newsItemToEdit: state.newsList[idxToEdit],
+            }
 
         default:
             return state

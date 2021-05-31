@@ -5,7 +5,7 @@ import ErrorIndicator from '../../components/error-indicator/error-indicator'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withNewsAppService } from '../../components/hoc/with-news-app-service'
-import { fetchNewsList, fetchNewsItem, newsItemDeleted } from '../../actions'
+import { fetchNewsList, fetchNewsItem, newsItemDeleted, newsItemToEdit } from '../../actions'
 import { compose } from '../../utils/compose'
 
 class NewsListContainer extends Component {
@@ -24,13 +24,16 @@ class NewsListContainer extends Component {
     onNewsItemDeleted = (id) => {
         // this.props.newsItemDeleted(id) // почему-то не импортируется из withNewsAppService
         fetch(`http://localhost:5000/api/news/${id}`, { method: 'DELETE' })
-            // .then(() => this.props.fetchNewsList()) // чтобы не обращаться на сервер, удалю из Redux state
-            .then(this.props.newsItemDeleted(id))
+            .then(this.props.newsItemDeleted(id)) //удаление из Redux store без обращения к серверу
 
+
+
+        // .then(() => this.props.fetchNewsList()) // чтобы не обращаться на сервер, удаляю из Redux state
     }
 
     onNewsItemChanged = (id) => {
-        console.log('changed newsItem', id)
+        console.log('component', id)
+        this.props.newsItemToEdit(id)
         this.props.history.push(`/edit/`)
     }
 
@@ -63,7 +66,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchNewsList: fetchNewsList(newsAppService, dispatch),
         fetchNewsItem: fetchNewsItem(newsAppService, dispatch),
-        newsItemDeleted: (id) => dispatch(newsItemDeleted(id))
+        newsItemDeleted: (id) => dispatch(newsItemDeleted(id)),
+        newsItemToEdit: (id) => dispatch(newsItemToEdit(id))
     }
 }
 

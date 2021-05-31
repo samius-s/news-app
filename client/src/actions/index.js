@@ -59,6 +59,12 @@ const newsItemDeleted = (id) => {
     }
 }
 
+const newsItemToEdit = (id) => {
+    return {
+        type: 'NEWSITEM_EDIT',
+        payload: id
+    }
+}
 
 const fetchNewsList = (newsAppService, dispatch) => () => {
     dispatch(newsListRequested())
@@ -80,4 +86,5 @@ export {
     isAdminToggledOn,
     isAdminToggledOff,
     newsItemDeleted,
+    newsItemToEdit
 }

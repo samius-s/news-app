@@ -15,12 +15,16 @@ const NewsItem = ({ isAdmin, newsItem, onNewsItemSelected, onNewsItemDeleted, on
 
     return (
         <div className='news-list-item'>
-            <div className='news-cover' onClick={onNewsItemSelected}>
-                <img src={imgUrl} alt='cover' />
-            </div>
             <div className='news-details'>
-                <span className='news-title' onClick={onNewsItemSelected}>{title}</span>
-                <span className='news-short-description'>{shortDescription}</span>
+                <div className='news-cover' onClick={onNewsItemSelected}>
+                    <img src={imgUrl} alt='cover' />
+                </div>
+                <div className='news-description'>
+                    <div className='news-title' onClick={onNewsItemSelected}>{title}</div>
+
+                    <div className='news-short-description'>{shortDescription}</div>
+                </div>
+
             </div>
             <div className='news-control' >
                 {newsControl}
