@@ -1,11 +1,11 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import NewsDataForm from '../news-data-form/news-data-form'
+import NewsDataFormContainer from '../../containers/news-data-form-container/news-data-form-container'
 
 const EditPage = ({ isAdmin }) => {
 
     if (isAdmin) {
-        return <NewsDataForm />
+        return <NewsDataFormContainer />
     }
 
     return <Redirect to='/' />

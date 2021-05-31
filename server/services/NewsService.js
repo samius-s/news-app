@@ -30,8 +30,20 @@ class NewsService {
     }
 
     async create(newsItem, image) {
-        const fileName = FileService.saveFile(image, newsItem.imageId)
-        const createNewsItem = await NewsItem.create({ ...newsItem, image: fileName })
+        const newsItemMaxId = await NewsItem.find().sort({ imageId: -1 }).limit(1)
+        const idx = newsItemMaxId[0].imageId + 1
+
+        const fileName = FileService.saveFile(image, idx)
+
+        const correctedNewsItem = {
+            title: newsItem.title,
+            shortDescription: newsItem.shortDescription,
+            fullDescription: newsItem.fullDescription,
+            image: fileName,
+            imageId: idx
+        } // для соответствия API ТЗ использует imageId для каждой новости, он равен максимальному Id новости в базе данных + 1 
+
+        const createNewsItem = await NewsItem.create({ ...correctedNewsItem, image: fileName })
         return createNewsItem
     }
 
@@ -47,9 +59,6 @@ class NewsService {
         if (!id) {
             throw new Error('ID не указан')
         }
-        // const newsItem = await NewsItem.findByIdAndDelete(id)
-        // return newsItem
-
         const newsItem = await NewsItem.findOneAndDelete({ imageId: id })
         return newsItem
     }

@@ -5,7 +5,7 @@ const NewsItem = new mongoose.Schema({
     shortDescription: { type: String, require: true },
     fullDescription: { type: String, require: true },
     image: { type: String, require: true },
-    imageId: { type: Number, require: true }
+    imageId: { type: Number }
 })
 
 export default mongoose.model('NewsItem', NewsItem)
