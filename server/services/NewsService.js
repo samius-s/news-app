@@ -41,7 +41,7 @@ class NewsService {
             fullDescription: newsItem.fullDescription,
             image: fileName,
             imageId: idx
-        } // для соответствия API ТЗ использует imageId для каждой новости, он равен максимальному Id новости в базе данных + 1 
+        } // для соответствия API ТЗ используетcz imageId для каждой новости, он равен максимальному Id у существующих новостей в базе данных + 1 
 
         const createNewsItem = await NewsItem.create({ ...correctedNewsItem, image: fileName })
         return createNewsItem

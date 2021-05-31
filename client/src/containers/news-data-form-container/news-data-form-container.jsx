@@ -4,22 +4,20 @@ import { useInput } from '../../components/form-verification-hook/form-verificat
 
 const onSubmitHandler = (e) => {
     e.preventDefault()
-    // debugger
-    const title = e.target.elements.title.value
-    const shortDescription = e.target.elements.shortDescription.value
-    const fullDescription = e.target.elements.fullDescription.value
-    const image = e.target.elements.image.value
+    const formData = new FormData()
 
-    const a = { title, shortDescription, fullDescription, image }
+    formData.append('title', e.target.elements.title.value)
+    formData.append('shortDescription', e.target.elements.shortDescription.value)
+    formData.append('fullDescription', e.target.elements.fullDescription.value)
+    formData.append('image', e.target.elements.image.files[0])
+
     const requestOptions = {
         method: 'POST',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(a)
+        body: formData
     };
     fetch('http://localhost:5000/api/news', requestOptions)
         .then(response => response.json())
-        .then(console.log('post', a));
+        .then(alert('Новость опубликована'))
 }
 
 const NewsDataFormContainer = () => {
