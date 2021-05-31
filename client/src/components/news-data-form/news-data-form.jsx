@@ -1,9 +1,8 @@
 import React from 'react'
 import './news-data-form.css'
 
-
-
 const NewsDataForm = ({ title, shortDescription, fullDescription, image, onSubmitHandler }) => {
+
     return (
         <div className='news-data'>
             <h2>Подготовка новости к публикации</h2>

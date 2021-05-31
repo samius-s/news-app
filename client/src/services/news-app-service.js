@@ -23,8 +23,8 @@ export default class NewsAppService {
         return newsItem
     }
 
-    deleteNewsItem = (id) => {
-        fetch(`${this._apiBase}/news/${id}`, { method: 'DELETE' })
-    }
+    // deleteNewsItem = (id) => {
+    //     fetch(`${this._apiBase}/news/${id}`, { method: 'DELETE' })
+    // }
 }
 

@@ -5,9 +5,11 @@ import Header from '../header/header'
 import HomePage from '../pages/home-page'
 import NewsItemPage from '../pages/news-item-page'
 import EditPage from '../pages/edit-page'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-const App = ({ isAdmin }) => {
+const App = () => {
+  const isAdmin = useSelector(state => state.isAdmin)
+
   return (
     <main role='main' className='app container'>
       <Header />
@@ -27,8 +29,4 @@ const App = ({ isAdmin }) => {
   )
 }
 
-const mapStateToProps = ({ isAdmin }) => {
-  return { isAdmin }
-}
-
-export default connect(mapStateToProps)(App)
+export default App

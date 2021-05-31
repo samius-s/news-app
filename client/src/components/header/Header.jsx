@@ -10,11 +10,10 @@ const Header = () => {
             <Link to='/' style={{ textDecoration: 'none' }} >
                 <div className='logo-container'>
                     <img src={logo} alt='logo' />
-                    {/* <h1>НОВОСТИ</h1> */}
                     <span>Новости</span>
                 </div>
             </Link>
-            <span><AdminPanel /></span>
+            <AdminPanel />
         </header>
     )
 }

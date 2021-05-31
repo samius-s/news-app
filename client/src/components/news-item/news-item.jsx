@@ -6,7 +6,8 @@ const NewsItem = ({ isAdmin, newsItem, onNewsItemSelected, onNewsItemDeleted, on
 
     const { title, shortDescription, image } = newsItem
     const imgUrl = `http://localhost:5000/newsImage-${image}.jpg`
-    const newsControl = isAdmin ?
+
+    const newsAdminControl = isAdmin ?
         <Fragment>
             <Button type={"fa fa-pencil"} onAction={onNewsItemChanged} />
             <Button type={"fa fa-trash"} onAction={onNewsItemDeleted} />
@@ -21,13 +22,11 @@ const NewsItem = ({ isAdmin, newsItem, onNewsItemSelected, onNewsItemDeleted, on
                 </div>
                 <div className='news-description'>
                     <div className='news-title' onClick={onNewsItemSelected}>{title}</div>
-
                     <div className='news-short-description'>{shortDescription}</div>
                 </div>
-
             </div>
             <div className='news-control' >
-                {newsControl}
+                {newsAdminControl}
             </div>
         </div>
     )

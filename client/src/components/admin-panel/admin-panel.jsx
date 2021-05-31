@@ -20,7 +20,7 @@ class AdminPanel extends Component {
         })
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (this.props.isAdmin !== prevProps.isAdmin) {
             this.setState((state) => {
                 return {
@@ -31,10 +31,9 @@ class AdminPanel extends Component {
     }
 
     render() {
-
         const { isAdmin, isAdminToggledOn, isAdminToggledOff } = this.props
 
-        const list = this.state.isToggleOpen
+        const toggleItemsList = this.state.isToggleOpen
             ? <AdminPanelToggle isAdminToggledOn={isAdminToggledOn}
                 isAdminToggledOff={isAdminToggledOff} />
             : null
@@ -55,7 +54,7 @@ class AdminPanel extends Component {
                     Права администратора
                     <span onClick={this.toggleChange}>{listLabel}
                         <i className={caretView} /></span>
-                    {list}
+                    {toggleItemsList}
                 </div>
                 <div className='add-news-button'>
                     <Link to='/edit'>
