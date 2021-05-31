@@ -1,0 +1,8 @@
+.full-news-list {
+    text-align: justify;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
